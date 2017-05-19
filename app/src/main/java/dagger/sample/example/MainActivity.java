@@ -26,22 +26,15 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     SharedPreferenceModel sharedPreferenceModel1;
 
-
+    @Inject
     DataBaseHandler dataBaseHandler;
-
-    DataBaseHandler dataBaseHandler1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dataBaseHandler = MyApplication.getComponent().getDataBaseHandler();
-        dataBaseHandler1 = MyApplication.getComponent().getDataBaseHandler();
-//        sharedPreferenceModel = MyApplication.getSecondComponent().getSharedPreferenceModel();
-        Log.e("Shared","1-"+dataBaseHandler);
-        Log.e("Shared","2-"+dataBaseHandler1);
-        Log.e("Shared","2-"+MyApplication.getComponent().getDataBaseHandler());
+        MyApplication.getComponent().inject(this);
 
         Toast.makeText(getApplicationContext(), "Context:"+context, Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(), "Shared Preferences:"+sharedPreferenceModel, Toast.LENGTH_SHORT).show();
